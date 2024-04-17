@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-export const bookIdValidator = Joi.object({bookId: Joi.string().required()});
+export const bookIdValidator = Joi.object({ bookId: Joi.string().required() });
 
 export type BookSearch = {
 	name?: string;
@@ -54,4 +54,3 @@ export const editBookValidator = Joi.object<EditBook, true>({
 	readPage: Joi.number().required(),
 	reading: Joi.boolean().required(),
 });
-

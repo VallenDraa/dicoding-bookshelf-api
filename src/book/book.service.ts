@@ -1,8 +1,8 @@
-import {type BookSearch, type NewBook} from './../utils/validator.js';
-import {type Book} from './book.types.js';
-import {booksStore} from './book.store.js';
-import {nanoid} from 'nanoid';
-import {formatBooks} from './book.utils.js';
+import { type BookSearch, type NewBook } from './../utils/validator.js';
+import { type Book } from './book.types.js';
+import { booksStore } from './book.store.js';
+import { nanoid } from 'nanoid';
+import { formatBooks } from './book.utils.js';
 
 export const createBookService = (bookData: NewBook) => {
 	const currentDate = new Date().toISOString();
@@ -27,18 +27,25 @@ export const getAllBooksService = (bookSearch: BookSearch) => {
 		return formatBooks(books);
 	}
 
-	return formatBooks(books.filter(book => {
-		const isIncludedByName
-			= book.name.toLocaleLowerCase().includes(
-				bookSearch.name ? bookSearch.name.toLocaleLowerCase() : '',
-			);
-		const isIncludedByReadingStatus
-			= bookSearch.reading === undefined || book.reading === (bookSearch.finished === '1');
-		const isIncludedByFinishedStatus
-			= bookSearch.finished === undefined || book.finished === (bookSearch.finished === '1');
+	return formatBooks(
+		books.filter(book => {
+			const isIncludedByName = book.name
+				.toLocaleLowerCase()
+				.includes(bookSearch.name ? bookSearch.name.toLocaleLowerCase() : '');
+			const isIncludedByReadingStatus =
+				bookSearch.reading === undefined ||
+				book.reading === (bookSearch.finished === '1');
+			const isIncludedByFinishedStatus =
+				bookSearch.finished === undefined ||
+				book.finished === (bookSearch.finished === '1');
 
-		return isIncludedByName && isIncludedByReadingStatus && isIncludedByFinishedStatus;
-	}));
+			return (
+				isIncludedByName &&
+				isIncludedByReadingStatus &&
+				isIncludedByFinishedStatus
+			);
+		}),
+	);
 };
 
 export const getBookByIdService = (bookId: string) => {
@@ -54,7 +61,7 @@ export const editBookService = (bookId: string, bookData: NewBook) => {
 		const updatedBooks = books.map(book => {
 			if (book.id === bookId) {
 				isUpdated = true;
-				return {...book, ...bookData, updatedAt: new Date().toISOString()};
+				return { ...book, ...bookData, updatedAt: new Date().toISOString() };
 			}
 
 			return book;
@@ -68,14 +75,16 @@ export const editBookService = (bookId: string, bookData: NewBook) => {
 
 export const deleteBookService = (bookId: string) => {
 	let isDeleted = false;
-	booksStore.update(books => books.filter(book => {
-		if (book.id === bookId) {
-			isDeleted = true;
-			return false;
-		}
+	booksStore.update(books =>
+		books.filter(book => {
+			if (book.id === bookId) {
+				isDeleted = true;
+				return false;
+			}
 
-		return true;
-	}));
+			return true;
+		}),
+	);
 
 	return isDeleted;
 };

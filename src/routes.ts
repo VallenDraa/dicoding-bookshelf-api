@@ -1,9 +1,16 @@
-import {type ServerRoute} from '@hapi/hapi';
+import { type ServerRoute } from '@hapi/hapi';
 import {
-	bookIdValidator, bookSearchValidator, editBookValidator, newBookValidator,
+	bookIdValidator,
+	bookSearchValidator,
+	editBookValidator,
+	newBookValidator,
 } from './utils/validator.js';
 import {
-	createBookController, deleteBookController, editBookController, getAllBooksController, getBookByIdController,
+	createBookController,
+	deleteBookController,
+	editBookController,
+	getAllBooksController,
+	getBookByIdController,
 } from './book/book.controller.js';
 
 export const routes: ServerRoute[] = [
@@ -62,5 +69,4 @@ export const routes: ServerRoute[] = [
 		},
 		handler: deleteBookController,
 	},
-
 ];

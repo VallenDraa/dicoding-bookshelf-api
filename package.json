@@ -1,36 +1,37 @@
 {
-  "name": "dicoding-bookshelf-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "build": "rimraf dist && tsc",
-    "start": "npm run build && node ./dist/server.js",
-    "start:dev": "nodemon src/server.ts",
-    "lint": "eslint ./src/** --ext .ts",
-    "pm:test": "newman run pm-test-collections.json --environment pm-test-environments.json"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@hapi/hapi": "^21.3.3",
-    "joi": "^17.12.2",
-    "nanoid": "^5.0.6"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.25",
-    "@typescript-eslint/eslint-plugin": ">=7.0.2",
-    "@typescript-eslint/parser": ">=7.0.2",
-    "eslint": ">=8.56.0",
-    "eslint-config-xo": "^0.44.0",
-    "eslint-config-xo-typescript": "^4.0.0",
-    "newman": "^6.1.1",
-    "nodemon": "^3.1.0",
-    "rimraf": "^5.0.5",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.2"
-  }
+	"name": "dicoding-bookshelf-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"type": "module",
+	"scripts": {
+		"build": "rimraf dist && tsc",
+		"start": "npm run build && node ./dist/server.js",
+		"start-dev": "nodemon src/server.ts",
+		"lint": "eslint ./src/** --ext .ts",
+		"pm:test": "newman run pm-test-collections.json --environment pm-test-environments.json"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@hapi/hapi": "^21.3.3",
+		"joi": "^17.12.2",
+		"nanoid": "^5.0.6"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.25",
+		"@typescript-eslint/eslint-plugin": "^7.7.0",
+		"@typescript-eslint/parser": "^7.7.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-config-xo": "^0.44.0",
+		"eslint-config-xo-typescript": "^4.0.0",
+		"newman": "^6.1.1",
+		"nodemon": "^3.1.0",
+		"rimraf": "^5.0.5",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.4.5"
+	}
 }
